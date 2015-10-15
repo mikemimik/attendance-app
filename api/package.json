@@ -1,0 +1,29 @@
+{
+  "name": "attendance-api",
+  "version": "0.0.1",
+  "description": "attendance api",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikemimik/attendance-app.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Michael Perrotte",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/mikemimik/attendance-app/issues"
+  },
+  "homepage": "https://github.com/mikemimik/attendance-app#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "epilogue": "^0.6.2",
+    "express": "^4.13.3",
+    "mysql": "^2.9.0",
+    "sequelize": "^3.12.0"
+  }
+}
