@@ -1,6 +1,8 @@
-# Folders
+#NPM
 node_modules
-typings
+api/node_modules
+webapp/node_modules
 
-# Files
+#VSCODE
+typings
 jsconfig.json
