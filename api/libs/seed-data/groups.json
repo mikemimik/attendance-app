@@ -1,14 +1,18 @@
 [
   {
-    "title": "group 1",
+    "title": "pre-comp group",
     "description": null
   },
   {
-    "title": "group 2",
+    "title": "provincial-group 1",
     "description": null
   },
   {
-    "title": "group 3",
+    "title": "provincial-group 2",
+    "description": null
+  },
+  {
+    "title": "national group",
     "description": null
   }
 ]

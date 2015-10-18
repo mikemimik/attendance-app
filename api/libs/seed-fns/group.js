@@ -28,6 +28,7 @@ module.exports = function(callback) {
 
         // INFO: add created group to results
         result.groups.push(createdGroup);
+        // console.log('createdGroup', createdGroup);
         endFunction();
       });
     });

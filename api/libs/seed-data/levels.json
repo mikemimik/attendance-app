@@ -1,22 +1,30 @@
 [
   {
-    "title": "Provincial 1",
+    "title": "Level 1",
     "description": null
   },
   {
-    "title": "Provincial 2",
+    "title": "Level 2",
     "description": null
   },
   {
-    "title": "Provincial 3",
+    "title": "Level 3",
     "description": null
   },
   {
-    "title": "Provincial 4",
+    "title": "Level 4",
     "description": null
   },
   {
-    "title": "Provincial 5",
+    "title": "Level 5",
+    "description": null
+  },
+  {
+    "title": "Junior National",
+    "description": null
+  },
+  {
+    "title": "Senior National",
     "description": null
   }
 ]
