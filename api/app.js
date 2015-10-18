@@ -33,12 +33,14 @@ var levelResource = epilogue.resource({
 
 var dayResource = epilogue.resource({
   model: model.TrainingDay,
-  endpoints: [ '/trainingday', '/trainingday/:trainingDayId' ]
+  endpoints: [ '/trainingday', '/trainingday/:trainingDayId' ],
+  include: [ { model: model.Member }]
 });
 
 var groupResource = epilogue.resource({
   model: model.Group,
-  endpoints: [ '/group', '/group/:groupId' ]
+  endpoints: [ '/group', '/group/:groupId' ],
+  include: [ { model: model.Member } ]
 });
 
 db.sequelize

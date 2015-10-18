@@ -27,7 +27,13 @@ model.Group.belongsToMany(model.Member, {
   through: 'GroupMember',
   foreignKey: 'groupId'
 });
-model.Group.belongsToMany(model.TrainingDay, { through: 'Schedule' });
-model.TrainingDay.belongsToMany(model.Group, { through: 'Schedule' });
+model.Member.belongsToMany(model.TrainingDay, {
+  through: 'Schedule',
+  foreignKey: 'memberId'
+});
+model.TrainingDay.belongsToMany(model.Member, {
+  through: 'Schedule',
+  foreignKey: 'trainingDayId'
+});
 
 module.exports = model;
