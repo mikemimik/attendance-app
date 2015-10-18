@@ -19,8 +19,14 @@ fs.readdirSync(__dirname).forEach(function(file) {
 });
 
 // Association
-model.Member.belongsToMany(model.Group, { through: 'GroupMember' });
-model.Group.belongsToMany(model.Member, { through: 'GroupMember' });
+model.Member.belongsToMany(model.Group, {
+  through: 'GroupMember',
+  foreignKey: 'memberId'
+});
+model.Group.belongsToMany(model.Member, {
+  through: 'GroupMember',
+  foreignKey: 'groupId'
+});
 model.Group.belongsToMany(model.TrainingDay, { through: 'Schedule' });
 model.TrainingDay.belongsToMany(model.Group, { through: 'Schedule' });
 
