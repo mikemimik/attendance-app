@@ -19,14 +19,13 @@ fs.readdirSync(__dirname).forEach(function(file) {
 });
 
 // Association
-model.Member.belongsToMany(model.Group, {
-  through: 'GroupMember',
-  foreignKey: 'memberId'
-});
-model.Group.belongsToMany(model.Member, {
-  through: 'GroupMember',
+model.Member.belongsTo(model.Group, { foreignKey: 'groupId' });
+model.Group.hasMany(model.Member, {
+  onDelete: 'SET NULL',
+  onUpdate: 'CASCADE',
   foreignKey: 'groupId'
 });
+
 model.Member.belongsToMany(model.TrainingDay, {
   through: 'Schedule',
   foreignKey: 'memberId'
