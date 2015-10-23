@@ -43,6 +43,10 @@ var groupResource = epilogue.resource({
   include: [ { model: model.Member } ]
 });
 
+var dayController = require('./controllers/dayController');
+
+dayResource.use(dayController);
+
 db.sequelize
   .sync({ force: true })
   .then(seed.init)
