@@ -14,6 +14,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+// INFO: attendance list (GET /attendance) wip
 app.get('/', function(req, res, context) {
   var result = [];
   model.Attendance.findAll().then(function(attendances) {
@@ -27,7 +29,7 @@ app.get('/', function(req, res, context) {
         // console.log('key', key);
         // console.log(result[key]);
         attendance.dataValues.members = members;
-        console.log('attendance', attendance);
+        // console.log('attendance', attendance);
         result[key]['members'] = members;
         done();
       });
