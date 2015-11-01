@@ -19,7 +19,7 @@ var _ = require('lodash');
 var model = require('../models');
 
 function getMembers() {
-  
+
 }
 
 module.exports = {
@@ -59,7 +59,6 @@ module.exports = {
       },
       action: function(req, res, context) {
         model.Attendance.findAll().then(function(attendances){
-          // console.log('attendances', attendances);
           var done = _.after(attendances.length, function() {
             context.instance = attendances;
             context.continue();
@@ -72,11 +71,9 @@ module.exports = {
           });
         });
         console.log('list', 'fetch', 'action');
-        // context.continue();
       },
       after: function(req, res, context) {
         console.log('list', 'fetch', 'after');
-        // console.log('lsit', 'fetch', 'context.instance', context.instance);
         context.continue();
       }
     },
@@ -172,8 +169,16 @@ module.exports = {
         context.continue();
       },
       action: function(req, res, context) {
+        // console.log(context);
+        var params = context.criteria;
+        model.Attendance.findById(params.attendanceID).then(function(attendance) {
+          attendance.getAbsentees().then(function(members) {
+            attendance.dataValues.members = members;
+            context.instance = attendance;
+            context.continue();
+          });
+        });
         console.log('read', 'fetch', 'action');
-        context.continue();
       },
       after: function(req, res, context) {
         console.log('read', 'fetch', 'after');
@@ -333,6 +338,144 @@ module.exports = {
       },
       after: function(req, res, context) {
         console.log('update', 'complete', 'after');
+        context.continue();
+      }
+    }
+  },
+  create: {
+    start: {
+      before: function(req, res, context) {
+        console.log('create', 'start', 'before');
+        context.continue();
+      },
+      action: function(req, res, context) {
+        console.log('create', 'start', 'action');
+        context.continue();
+      },
+      after: function(req, res, context) {
+        console.log('create', 'start', 'after');
+        context.continue();
+      }
+    },
+    auth: {
+      before: function(req, res, context) {
+        console.log('create', 'auth', 'before');
+        context.continue();
+      },
+      action: function(req, res, context) {
+        console.log('create', 'auth', 'action');
+        context.continue();
+      },
+      after: function(req, res, context) {
+        console.log('create', 'auth', 'after');
+        context.continue()
+      }
+    },
+    fetch: {
+      before: function(req, res, context) {
+        console.log('create', 'fetch', 'before');
+        context.continue();
+      },
+      action: function(req, res, context) {
+        console.log('create', 'fetch', 'action');
+        context.continue();
+      },
+      after: function(req, res, context) {
+        console.log('create', 'fetch', 'after');
+        context.continue();
+      }
+    },
+    data: {
+      before: function(req, res, context) {
+        console.log('create', 'data', 'before');
+        context.continue();
+      },
+      action: function(req, res, context) {
+        console.log('create', 'data', 'action');
+        context.attributes = _.extend(context.attributes, req.body);
+        // console.log(context);
+        // TODO: do some basic validation
+        // TODO: check req.body: date key -> date
+        // TODO: check req.body: members key -> array of integers
+        // TODO: check members exist (have to do this? [probably, users are dumb])
+        context.continue();
+      },
+      after: function(req, res, context) {
+        console.log('create', 'data', 'after');
+        context.continue();
+      }
+    },
+    write: {
+      // INFO: this is the important milestone
+      before: function(req, res, context) {
+        console.log('create', 'write', 'before');
+        context.continue();
+      },
+      action: function(req, res, context) {
+        console.log('create', 'write', 'action');
+
+        // INFO: assuming that context.attributes is correct
+        // INFO: assuming all members exist
+        // INFO: create new attendance object
+        model.Attendance.create({
+          date: context.attributes.date
+        }).then(function(createdAttendance) {
+
+          // INFO: each member in array
+          _.each(context.attributes.members, function(value) {
+
+            // INFO: find member by id
+            model.Member.findById(value)
+              .then(function(member) {
+
+                // INFO: add member to attendance object
+                createdAttendance.addAbsentees(member);
+                // member.addAbsents(createdAttendance);
+              });
+          });
+        });
+        context.continue();
+      },
+      after: function(req, res, context) {
+        console.log('create', 'write', 'after');
+
+        // TODO: get created attendance object
+        // TODO: find it's associated memberResource
+        // TODO: attatch members to object
+        // INFO: context.instance == attendance object created
+        var attendence = context.instance;
+        attendence.getAbsentees().then(function(members) {
+          console.log('members', members);
+        });
+        console.log(context.instance);
+        context.continue();
+      }
+    },
+    send: {
+      before: function(req, res, context) {
+        console.log('create', 'send', 'before');
+        context.continue();
+      },
+      action: function(req, res, context) {
+        console.log('create', 'send', 'action');
+        context.continue();
+      },
+      after: function(req, res, context) {
+        console.log('create', 'send', 'after');
+        context.continue();
+      }
+    },
+    complete: {
+      before: function(req, res, context) {
+        console.log('create', 'complete', 'before');
+        context.continue();
+      },
+      action: function(req, res, context) {
+        console.log('create', 'complete', 'action');
+        context.continue();
+      },
+      after: function(req, res, context) {
+        console.log('create', 'complete', 'after');
         context.continue();
       }
     }
