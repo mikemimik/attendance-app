@@ -8,7 +8,10 @@ var sequelize = new Sequelize(config.name, config.username, config.password, {
     max: 5,
     min: 0,
     idel: 10000
-  }
+  },
+  // INFO: silence sequelize
+  // INFO: comment line to see output
+  logging: function() {}
 });
 
 module.exports = {

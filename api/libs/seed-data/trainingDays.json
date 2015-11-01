@@ -1,21 +1,26 @@
 [
   {
+    "__id": 1,
     "__members": "all",
     "weekday": "Sunday"
   },
   {
+    "__id": 2,
     "__members": [2, 3, 7, 9, 10, 13, 16, 20, 21, 22],
     "weekday": "Monday"
   },
   {
+    "__id": 3,
     "__members": [2, 3, 7, 9, 10, 13, 16, 20, 21, 22],
     "weekday": "Tuesday"
   },
   {
+    "__id": 4,
     "__members": "all",
     "weekday": "Wednesday"
   },
   {
+    "__id": 5,
     "__members": [2, 3, 7, 9, 10, 13, 16, 20, 21, 22],
     "weekday": "Thursday"
   }

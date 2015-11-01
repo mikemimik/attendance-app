@@ -35,4 +35,15 @@ model.TrainingDay.belongsToMany(model.Member, {
   foreignKey: 'trainingDayId'
 });
 
+model.Member.belongsToMany(model.Attendance, {
+  as: 'Absents',
+  through: 'MemberAttendance',
+  foreignKey: 'memberId'
+});
+model.Attendance.belongsToMany(model.Member, {
+  as: 'Absentees',
+  through: 'MemberAttendance',
+  foreignKey: 'attendanceId'
+});
+
 module.exports = model;

@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
+var async = require('async');
 
 var model = require('../../models');
 
@@ -37,9 +38,11 @@ module.exports = {
       });
     });
   },
-  map: function(callback) {
+  map: function(models, callback) {
+    console.log('seed-fns', 'group', 'map', 'entry_point');
     var result = {};
     result = dataGroups;
-    callback(null, result);
+    console.log('seed-fns', 'group', 'map', 'callback', 'fire');
+    callback(null, true);
   }
 };

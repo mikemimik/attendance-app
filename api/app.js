@@ -2,6 +2,7 @@ var bodyParser = require('body-parser');
 var epilogue = require('epilogue');
 var express = require('express');
 var http = require('http');
+var _ = require('lodash');
 
 var config = require('./libs/config');
 var db = require('./libs/db');
@@ -13,6 +14,27 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get('/', function(req, res, context) {
+  var result = [];
+  model.Attendance.findAll().then(function(attendances) {
+    // console.log('attendances', attendances);
+    var done = _.after(attendances.length, function() {
+      res.send(result);
+    });
+    _.forEach(attendances, function(attendance, key) {
+      result.push(attendance.dataValues);
+      attendance.getAbsentees().then(function(members) {
+        // console.log('key', key);
+        // console.log(result[key]);
+        attendance.dataValues.members = members;
+        console.log('attendance', attendance);
+        result[key]['members'] = members;
+        done();
+      });
+    });
+  });
+});
+
 var server = http.createServer(app).listen(config.app.port);
 
 epilogue.initialize({
@@ -23,7 +45,7 @@ epilogue.initialize({
 var memberResource = epilogue.resource({
   model: model.Member,
   endpoints: [ '/member', '/member/:memberId' ],
-  include: [ { model: model.Group }]
+  include: [ { model: model.Group } ]
 });
 
 var levelResource = epilogue.resource({
@@ -31,7 +53,7 @@ var levelResource = epilogue.resource({
   endpoints: [ '/level', '/level/:levelId']
 });
 
-var dayResource = epilogue.resource({
+var trainingDayResource = epilogue.resource({
   model: model.TrainingDay,
   endpoints: [ '/trainingday', '/trainingday/:trainingDayId' ],
   include: [ { model: model.Member }]
@@ -43,9 +65,21 @@ var groupResource = epilogue.resource({
   include: [ { model: model.Member } ]
 });
 
-var dayController = require('./controllers/dayController');
+var attendanceResource = epilogue.resource({
+  model: model.Attendance,
+  endpoints: [ '/attendance', '/attendance/:attendanceID' ]
+});
 
-dayResource.use(dayController);
+var trainingDayController = require('./controllers/trainingDayController');
+var attendanceController = require('./controllers/attendanceController');
+
+trainingDayResource.use(trainingDayController);
+attendanceResource.use(attendanceController);
+
+// INFO: only for testing
+db.sequelize.query('SET foreign_key_checks = 0');
+db.sequelize.drop();
+db.sequelize.query('SET foreign_key_checks = 1');
 
 db.sequelize
   .sync({ force: true })
