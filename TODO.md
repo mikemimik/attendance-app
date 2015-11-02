@@ -4,17 +4,22 @@
   - wip [DONE]
   - merge into controller [DONE]
  - read: list attendance instance, with members attached [DONE]
- - create: neends to take date, and members object
+ - create: needs to take date, and members object [DONE]
  ```
  {
-   date: 'data object',
-   members: [ array of id's ]
+   date: 'YYYY-MM-DD',
+   members: [ #, #, # ]
  }
  ```
-  - where will validation be?
-    - let epilogue handle it for now [FIX]
  - update:
- - delete:
+  - addAbsentees
+  - removeAbsentees
+ ```
+ {
+   attendanceId: #,
+   members: [ #, #, # ]
+ }
+ ```
 
-### Future
-- add dicipline for members
+### Long Term
+- add discipline for members
