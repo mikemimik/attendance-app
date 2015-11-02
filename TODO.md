@@ -6,7 +6,7 @@
  - read: list attendance instance, with members attached [DONE]
  - create: needs to take date, and members object [DONE]
  ```javascript
- PUT /attendance
+ POST /attendance
  {
    date: 'YYYY-MM-DD',
    members: [ #, #, # ]
