@@ -5,7 +5,8 @@
   - merge into controller [DONE]
  - read: list attendance instance, with members attached [DONE]
  - create: needs to take date, and members object [DONE]
- ```
+ ```javascript
+ PUT /attendance
  {
    date: 'YYYY-MM-DD',
    members: [ #, #, # ]
@@ -14,7 +15,8 @@
  - update:
   - addAbsentees
   - removeAbsentees
- ```
+ ```javascript
+ PUT /attendance/:attendanceId
  {
    attendanceId: #,
    members: [ #, #, # ]
