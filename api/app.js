@@ -14,29 +14,6 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-// INFO: attendance list (GET /attendance) wip
-app.get('/', function(req, res, context) {
-  var result = [];
-  model.Attendance.findAll().then(function(attendances) {
-    // console.log('attendances', attendances);
-    var done = _.after(attendances.length, function() {
-      res.send(result);
-    });
-    _.forEach(attendances, function(attendance, key) {
-      result.push(attendance.dataValues);
-      attendance.getAbsentees().then(function(members) {
-        // console.log('key', key);
-        // console.log(result[key]);
-        attendance.dataValues.members = members;
-        // console.log('attendance', attendance);
-        result[key]['members'] = members;
-        done();
-      });
-    });
-  });
-});
-
 var server = http.createServer(app).listen(config.app.port);
 
 epilogue.initialize({
@@ -72,8 +49,8 @@ var attendanceResource = epilogue.resource({
   endpoints: [ '/attendance', '/attendance/:attendanceID' ]
 });
 
-var trainingDayController = require('./controllers/trainingDayController');
-var attendanceController = require('./controllers/attendanceController');
+var trainingDayController = require('./controllers/trainingDay.controller');
+var attendanceController = require('./controllers/attendance.controller');
 
 trainingDayResource.use(trainingDayController);
 attendanceResource.use(attendanceController);
