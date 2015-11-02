@@ -4,7 +4,8 @@
   "description": "attendance api",
   "main": "app.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha tests/*.test.js",
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "async": "^1.4.2",
+    "gulp": "^3.9.0",
     "lodash": "^3.10.1"
   }
 }

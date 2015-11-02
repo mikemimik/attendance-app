@@ -17,38 +17,35 @@
  */
 var _ = require('lodash');
 var model = require('../models');
-
-function getMembers() {
-
-}
+var async = require('async');
 
 module.exports = {
   list: {
     start: {
       before: function(req, res, context) {
-        console.log('list', 'start', 'before');
+        // console.log('list', 'start', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('list', 'start', 'action');
+        // console.log('list', 'start', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('list', 'start', 'after');
+        // console.log('list', 'start', 'after');
         context.continue();
       }
     },
     auth: {
       before: function(req, res, context) {
-        console.log('list', 'auth', 'before');
+        // console.log('list', 'auth', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('list', 'auth', 'action');
+        // console.log('list', 'auth', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('list', 'auth', 'after');
+        // console.log('list', 'auth', 'after');
         context.continue();
       }
     },
@@ -79,57 +76,57 @@ module.exports = {
     },
     data: {
       before: function(req, res, context) {
-        console.log('list', 'data', 'before');
+        // console.log('list', 'data', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('list', 'data', 'action');
+        // console.log('list', 'data', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('list', 'data', 'after');
+        // console.log('list', 'data', 'after');
         context.continue();
       }
     },
     write: {
       before: function(req, res, context) {
-        console.log('list', 'write', 'before');
+        // console.log('list', 'write', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('list', 'write', 'action');
+        // console.log('list', 'write', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('list', 'write', 'after');
+        // console.log('list', 'write', 'after');
         context.continue();
       }
     },
     send: {
       before: function(req, res, context) {
-        console.log('list', 'send', 'before');
+        // console.log('list', 'send', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('list', 'send', 'action');
+        // console.log('list', 'send', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('list', 'send', 'after');
+        // console.log('list', 'send', 'after');
         context.continue();
       }
     },
     complete: {
       before: function(req, res, context) {
-        console.log('list', 'complete', 'before');
+        // console.log('list', 'complete', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('list', 'complete', 'action');
+        // console.log('list', 'complete', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('list', 'complete', 'after');
+        // console.log('list', 'complete', 'after');
         context.continue();
       }
     }
@@ -137,29 +134,29 @@ module.exports = {
   read: {
     start: {
       before: function(req, res, context) {
-        console.log('read', 'start', 'before');
+        // console.log('read', 'start', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('read', 'start', 'action');
+        // console.log('read', 'start', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('read', 'start', 'after');
+        // console.log('read', 'start', 'after');
         context.continue();
       }
     },
     auth: {
       before: function(req, res, context) {
-        console.log('read', 'auth', 'before');
+        // console.log('read', 'auth', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('read', 'auth', 'action');
+        // console.log('read', 'auth', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('read', 'auth', 'after');
+        // console.log('read', 'auth', 'after');
         context.continue();
       }
     },
@@ -187,57 +184,57 @@ module.exports = {
     },
     data: {
       before: function(req, res, context) {
-        console.log('read', 'data', 'before');
+        // console.log('read', 'data', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('read', 'data', 'action');
+        // console.log('read', 'data', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('read', 'data', 'after');
+        // console.log('read', 'data', 'after');
         context.continue();
       }
     },
     write: {
       before: function(req, res, context) {
-        console.log('read', 'write', 'before');
+        // console.log('read', 'write', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('read', 'write', 'action');
+        // console.log('read', 'write', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('read', 'write', 'after');
+        // console.log('read', 'write', 'after');
         context.continue();
       }
     },
     send: {
       before: function(req, res, context) {
-        console.log('read', 'send', 'before');
+        // console.log('read', 'send', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('read', 'send', 'action');
+        // console.log('read', 'send', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('read', 'send', 'after');
+        // console.log('read', 'send', 'after');
         context.continue();
       }
     },
     complete: {
       before: function(req, res, context) {
-        console.log('read', 'complete', 'before');
+        // console.log('read', 'complete', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('read', 'complete', 'action');
+        // console.log('read', 'complete', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('read', 'complete', 'after');
+        // console.log('read', 'complete', 'after');
         context.continue();
       }
     }
@@ -393,6 +390,7 @@ module.exports = {
       action: function(req, res, context) {
         console.log('create', 'data', 'action');
         context.attributes = _.extend(context.attributes, req.body);
+        console.log('context', context);
         // console.log(context);
         // TODO: do some basic validation
         // TODO: check req.body: date key -> date
@@ -402,6 +400,7 @@ module.exports = {
       },
       after: function(req, res, context) {
         console.log('create', 'data', 'after');
+        console.log('context', context);
         context.continue();
       }
     },
@@ -409,6 +408,7 @@ module.exports = {
       // INFO: this is the important milestone
       before: function(req, res, context) {
         console.log('create', 'write', 'before');
+        console.log('context', context);
         context.continue();
       },
       action: function(req, res, context) {
@@ -417,24 +417,29 @@ module.exports = {
         // INFO: assuming that context.attributes is correct
         // INFO: assuming all members exist
         // INFO: create new attendance object
-        model.Attendance.create({
-          date: context.attributes.date
-        }).then(function(createdAttendance) {
+        // INFO: prep context for members object
+        context.instance.dataValues.members = [];
+        async.waterfall([
+          function(callback) {
+            var done = _.after(context.attributes.members, function() {
+              callback(null);
+            });
+            _.each(context.attributes.members, function(memberId) {
 
-          // INFO: each member in array
-          _.each(context.attributes.members, function(value) {
-
-            // INFO: find member by id
-            model.Member.findById(value)
-              .then(function(member) {
+              // INFO: find member by id
+              model.Member.findById(memberId).then(function(member) {
 
                 // INFO: add member to attendance object
-                createdAttendance.addAbsentees(member);
-                // member.addAbsents(createdAttendance);
+                context.instance.addAbsentees(member);
+                context.instance.dataValues.members.push(member);
+                // member.addAbsents(attendance);
+                done();
               });
-          });
+            });
+          }
+        ], function(err, result) {
+          context.continue();
         });
-        context.continue();
       },
       after: function(req, res, context) {
         console.log('create', 'write', 'after');
@@ -443,39 +448,39 @@ module.exports = {
         // TODO: find it's associated memberResource
         // TODO: attatch members to object
         // INFO: context.instance == attendance object created
-        var attendence = context.instance;
-        attendence.getAbsentees().then(function(members) {
-          console.log('members', members);
-        });
-        console.log(context.instance);
+        // var attendence = context.instance;
+        // attendence.getAbsentees().then(function(members) {
+        //   console.log('members', members);
+        // });
+        console.log('context.instance', context.instance);
         context.continue();
       }
     },
     send: {
       before: function(req, res, context) {
-        console.log('create', 'send', 'before');
+        // console.log('create', 'send', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('create', 'send', 'action');
+        // console.log('create', 'send', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('create', 'send', 'after');
+        // console.log('create', 'send', 'after');
         context.continue();
       }
     },
     complete: {
       before: function(req, res, context) {
-        console.log('create', 'complete', 'before');
+        // console.log('create', 'complete', 'before');
         context.continue();
       },
       action: function(req, res, context) {
-        console.log('create', 'complete', 'action');
+        // console.log('create', 'complete', 'action');
         context.continue();
       },
       after: function(req, res, context) {
-        console.log('create', 'complete', 'after');
+        // console.log('create', 'complete', 'after');
         context.continue();
       }
     }
